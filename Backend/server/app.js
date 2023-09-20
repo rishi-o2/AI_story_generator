@@ -50,7 +50,7 @@ app.post('/GPT', async (req, res) => {
           return res.status(404).json({ error: 'Story not found' });
         }
         story.likes++;
-        story.dislikes = Math.max(0, story.dislikes - 1); // Ensure dislikes never go below zero
+        story.dislikes = Math.max(0, story.dislikes - 1); 
         await story.save();
         res.json({ message: 'Story liked successfully', story });
       } catch (error) {
@@ -67,7 +67,7 @@ app.post('/GPT', async (req, res) => {
           return res.status(404).json({ error: 'Story not found' });
         }
         story.dislikes++;
-        story.likes = Math.max(0, story.likes - 1); // Ensure likes never go below zero
+        story.likes = Math.max(0, story.likes - 1); 
         await story.save();
         res.json({ message: 'Story disliked successfully', story });
       } catch (error) {
@@ -98,44 +98,6 @@ app.listen(port, () => {
   
 
 
-//*********************************************************************************************** */
-//import OpenAI from 'openai';
-
-// const openai = new OpenAI({
-//   apiKey: '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', // defaults to process.env["OPENAI_API_KEY"]
-// });
-
-// async function main() {
-//   try {
-//     const completion = await openai.chat.completions.create({
-//       messages: [{ role: 'user', content: 'Say this is a test' }],
-//       model: 'gpt-3.5-turbo',
-//     });
-
-//     console.log(completion.choices);
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// }
-
-// You need to define the 'app' and 'port' variables somewhere in your code.
-// Assuming you have already defined them, you should place the 'app.listen' part here.
-
-// For example:
-// const app = express();
-// const port = 3000;
-
-// Define your routes and middleware for your Express application here.
-// app.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(500).send('Something broke!');
-// });
-
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
-
-// main();
 
 
 

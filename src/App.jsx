@@ -115,15 +115,15 @@ function App() {
   };
 
   const handleContinue = () => {
-    // Append the generated text to the existing user input
+    
     const continuedText = `${userInput}\n${cbResponse.generated_text}`;
     setUserInput(continuedText);
-    // Optionally, you can clear the generated response if needed
+    
     setcbResponse("");
   };
 
   const handleReset = () => {
-    // Clear the text input and the generated response
+    
     setUserInput("");
     setcbResponse("");
   };
@@ -174,7 +174,7 @@ function App() {
   }
 
   const handleSave = () => {
-    // Implement save functionality here
+    
     const blob = new Blob([cbResponse.generated_text], { type: "text/plain" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -185,7 +185,7 @@ function App() {
   };
 
   const handleShare = () => {
-    // Implement share functionality here
+    
     if (navigator.share) {
       navigator.share({
         title: "Generated Text",

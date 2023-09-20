@@ -58,9 +58,9 @@ function StoryList() {
   const [showReloadMessage, setShowReloadMessage] = useState(false);
 
   useEffect(() => {
-    // Fetch the story data from the server
+    
     axios.get('/stories').then((response) => {
-      // Sort stories by likes in descending order
+      
       const sortedStories = response.data.sort((a, b) => b.likes - a.likes);
       setStories(sortedStories);
     });
@@ -70,7 +70,7 @@ function StoryList() {
     try {
       const response = await axios.post(`/like/${storyId}`);
       if (response.status === 200) {
-        // Update the local state to reflect the new number of likes
+        
         const updatedStories = stories.map((story) => {
           if (story._id === storyId) {
             return { ...story, likes: story.likes + 1 };
@@ -78,14 +78,14 @@ function StoryList() {
           return story;
         });
         setStories(updatedStories);
-        setShowReloadMessage(true); // Show the reload message
+        setShowReloadMessage(true); 
 
-        // Show a success toast message
+       
         toast.success('Liked successfully');
       }
     } catch (error) {
       console.error('Error liking story:', error);
-      // Show an error toast message
+      
       toast.error('Error liking story');
     }
   };
@@ -94,7 +94,7 @@ function StoryList() {
     try {
       const response = await axios.post(`/dislike/${storyId}`);
       if (response.status === 200) {
-        // Update the local state to reflect the new number of dislikes
+       
         const updatedStories = stories.map((story) => {
           if (story._id === storyId) {
             return { ...story, dislikes: story.dislikes + 1 };
@@ -102,14 +102,14 @@ function StoryList() {
           return story;
         });
         setStories(updatedStories);
-        setShowReloadMessage(true); // Show the reload message
+        setShowReloadMessage(true); 
 
-        // Show a success toast message
+        
         toast.error('Disliked successfully');
       }
     } catch (error) {
       console.error('Error disliking story:', error);
-      // Show an error toast message
+      
       toast.error ('Error disliking story');
     }
   };
